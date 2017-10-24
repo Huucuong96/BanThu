@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/LayOutUser.cshtml";
+}
+
+<h3 class="header">Đăng Ký Thành Viên</h3>
+<table align="center">
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px;color:#000000">
+            <td> Tên Khách Hàng:</td>
+            <td>
+                @Html.TextBox("TenKH")
+                @ViewData["Loi1"]
+            </td>
+
+        </tr>
+
+        <tr style="height:40px;color:#000000">
+            <td> Tên Ðăng Nhập:</td>
+            <td>
+                @Html.TextBox("TenDN")
+                @ViewData["Loi2"]
+            </td>
+
+        </tr>
+        <tr style="height:40px;color:#000000">
+            <td>Mật Khẩu:</td>
+            <td>
+                @Html.Password("MatKhau")
+                @ViewData["Loi3"]
+            </td>
+
+        </tr>
+        <tr style="height:40px;color:#000000">
+            <td>Nhập Lại Mật Khẩu:</td>
+            <td>
+                @Html.Password("MatKhauNhapLai")
+                @ViewData["Loi4"]
+            </td>
+        </tr>
+
+        <tr style="height:40px;color:#000000">
+            <td>Email:</td>
+            <td>
+                @Html.TextBox("Email")
+                @ViewData["Loi5"]
+            </td>
+
+        </tr>
+        <tr style="height:40px;color:#000000">
+            <td>Địa Chỉ:</td>
+            <td>
+                @Html.TextBox("DiaChi")
+                @ViewData["Loi6"]
+            </td>
+
+        </tr>
+        <tr style="height:40px;color:#000000">
+            <td>Số Ðiện Thoại:</td>
+            <td>
+                @Html.TextBox("SDT")
+                @ViewData["Loi7"]
+            </td>
+
+        </tr>
+
+        <tr style="height:40px;color:#000000">
+            <td>Ngày Sinh:</td>
+            <td>
+                <input type="date" name="Ngaysinh" />
+            </td>
+
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="Submit" value="Đăng ký" class="btn btn-default" />
+            </td>
+            <td>@Html.ActionLink("Quay về đăng nhập", "DangNhap")</td>
+        </tr>
+        <tr style="height:40px">
+            <td style="color: white"></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    }
+</table>
+
+
+
+
+
+
+

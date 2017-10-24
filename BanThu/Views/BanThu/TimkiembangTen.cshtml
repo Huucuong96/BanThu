@@ -1,0 +1,46 @@
+﻿ 
+@helper Truncate(string input, int lenght)
+{
+    if (input.Length < lenght)
+    {
+        @input
+    }
+    else
+    {
+
+        @input.Substring(0, lenght)<text>...</text>
+
+    }
+}
+
+
+
+
+<style>
+    .menutrang li {
+        display: inline;
+    }
+</style>
+@{
+    ViewBag.Title = "TimkiembangTen";
+    Layout = "~/Views/Shared/LayOutUser.cshtml";
+}
+
+<div class="content">
+    @foreach (var thu in Model)
+    {
+        <ul>
+            <li>
+                <a href="@Url.Action("Details", "BanThu", new { id = thu.MaSanPham })"><img alt="@thu.TenSanPham" src="~/images/@thu.AnhBia" style" width:50%" /></a>
+                <h2>@thu.TenSanPham</h2>
+                <p>@Truncate(thu.MoTa, 80) <a class="more" href="@Url.Action("Details", "BanThu", new { id = thu.MaSanPham })">Xem Chi Tiết</a></p>
+            </li>
+
+
+        </ul>
+    }
+</div>
+
+
+
+

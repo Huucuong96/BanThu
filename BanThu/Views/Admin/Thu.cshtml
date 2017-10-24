@@ -1,0 +1,94 @@
+﻿@using BanThu.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Thu>
+@helper Truncate(string input, int lenght)
+{
+    if (input.Length < lenght)
+    {
+        @input
+    }
+    else
+    {
+
+        @input.Substring(0, lenght)<text>...</text>
+
+    }
+}
+
+
+
+@{
+    ViewBag.Title = "Thu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản Lý Thú</h2>
+
+<p>
+    @Html.ActionLink("Thêm Thú", "ThemmoiSanpham")
+</p>
+<table class="table">
+    <tr>
+        
+        <th style="width:200px">
+           Tên Sản Phẩm
+        </th>
+        <th>
+            Giá Bán
+        </th>
+        <th style="width:300px">
+            Mô Tả
+        </th>
+        <th>
+            Ảnh Bìa
+        </th>
+        <th>
+            Ngày Cập Nhật
+        </th>
+        <th>
+            Số Lượng Tồn
+        </th>
+        <th></th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+         
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaBan)
+        </td>
+        <td>
+           @Truncate(item.MoTa, 80)
+        </td>
+        <td>
+            <img src="@Url.Content("~/images/"+  item.AnhBia)" width="120px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayCapNhat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongTon)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Suasanpham", new { MaSP=item.MaSanPham }) |
+            @Html.ActionLink("Details", "Chitietsanpham", new { id=item.MaSanPham }) |
+            @Html.ActionLink("Delete", "Xoasanpham", new { id=item.MaSanPham })
+        </td>
+    </tr>
+}
+
+</table>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("Thu", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

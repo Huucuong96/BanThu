@@ -1,0 +1,52 @@
+﻿<style type="text/css">
+    #Datmua a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 45px;
+        display: block;
+        float: right;
+        text-align: center;
+        padding-top: 10px;
+        margin-right:400px;
+        text-decoration: none;
+        font-weight: bold;
+        
+    }
+
+        #Datmua a:hover {
+            background-color: gray;
+            color: red;
+        }
+</style>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+<h3 class="header"> Thông Tin Chi Tiết Sản Phẩm</h3>
+<div>
+    <div style="width:40%;text-align:center">
+        <img src="~/images/@Model.AnhBia"style="width:100%" />
+    </div>
+    <div style="width:60%;float:left;padding:10px">
+        <h4 style="font-weight:bold;color:red">Tên Sản Phẩm:@Model.TenSanPham</h4>
+         
+        <p style="text-align:justify; color:#000000"><span style="font-weight:bold;color:#000000">Mô Tả:</span>@Model.MoTa</p>
+        <h4 style="font-weight:bold;color:#000000"> Ngày Cập Nhật:@Model.NgayCapNhat</h4>
+        <p style="font-weight:bold;color:#ff0000">Giá Bán:<span style="color:#000000;font-size:16pt">@Model.GiaBan VNĐ</span></p>
+    </div>
+     
+</div>
+<div id="Datmua">
+    <a href="@Url.Action("Themgiohang","GioHang",new {@iMaSanPham=@Model.MaSanPham,@strURL=Request.Url.ToString()})" class="list-group-item">
+        MUA HÀNG
+    </a>
+
+</div>
+
+
+
+
+
+
